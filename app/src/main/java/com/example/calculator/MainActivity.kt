@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-       // val calc = Calc()
+        val calculate = Calculate()
 
         setContentView(R.layout.activity_main)
         btn_0.setOnClickListener{
@@ -57,19 +57,19 @@ class MainActivity : AppCompatActivity() {
             enter += "."
         }
         btn_plus.setOnClickListener{
-
+            calculate.plus()
         }
         btn_minus.setOnClickListener{
-
+            calculate.minus()
         }
         btn_mul.setOnClickListener{
-
+            calculate.mul()
         }
         btn_div.setOnClickListener{
-
+            calculate.div()
         }
         btn_eq.setOnClickListener{
-
+            calculate.eq()
         }
     }
     fun newTextFields(str: String)
