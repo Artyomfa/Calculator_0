@@ -57,26 +57,52 @@ class MainActivity : AppCompatActivity() {
             enter += "."
         }
         btn_plus.setOnClickListener{
+            calculate.second_number = enter.toDouble()
             calculate.plus()
+            testview.text = enter
+            enter = ""
         }
         btn_minus.setOnClickListener{
+            calculate.second_number = enter.toDouble()
             calculate.minus()
+            testview.text = enter
+            enter = ""
         }
         btn_mul.setOnClickListener{
+            calculate.second_number = enter.toDouble()
             calculate.mul()
+            testview.text = enter
+            enter = ""
         }
         btn_div.setOnClickListener{
+            calculate.second_number = enter.toDouble()
             calculate.div()
+            testview.text = enter
+            enter = ""
         }
         btn_eq.setOnClickListener{
+            calculate.second_number = enter.toDouble()
             calculate.eq()
+            testview.text = enter
+            enter = ""
+            resultField.text = calculate.first_number.toString()
         }
     }
-    fun newTextFields(str: String)
-    {
-        resultField.text = ""
+
+    fun enter_number(str: String){
+        if (enter == "")
+            enter = str
+        else
+            enter += str
+      //  testview.text = enter
+
+    }
+
+    fun newTextFields(str: String) {
+        resultField.text = "0"
         resultField.text = str
     }
+
     private fun setTextFields(str: String) {
         resultField.append(str)
     }
