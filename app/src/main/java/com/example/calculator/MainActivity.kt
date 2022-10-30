@@ -57,33 +57,71 @@ class MainActivity : AppCompatActivity() {
             enter += "."
         }
         btn_plus.setOnClickListener{
-            calculate.second_number = enter.toDouble()
-            calculate.plus()
-            testview.text = enter
+            if (enter == "")
+                calculate.second_number = 0.0
+            else
+                calculate.second_number = enter.toDouble()
+            calculate.fixvalue()
+            //calculate.mul()calculate.plus()
+            testview.text = calculate.first_number.toString()
+            testsecond.text = calculate.second_number.toString()
+            //testview.text = enter
             enter = ""
+            calculate.action = "+"
+
         }
         btn_minus.setOnClickListener{
-            calculate.second_number = enter.toDouble()
-            calculate.minus()
-            testview.text = enter
+            if (enter == "")
+                calculate.second_number = 0.0
+            else
+                calculate.second_number = enter.toDouble()
+            calculate.fixvalue()
+            //calculate.mul()calculate.minus()
+            testview.text = calculate.first_number.toString()
+            testsecond.text = calculate.second_number.toString()
+            //testview.text = enter
             enter = ""
+            calculate.action = "-"
         }
         btn_mul.setOnClickListener{
-            calculate.second_number = enter.toDouble()
-            calculate.mul()
-            testview.text = enter
+            if (enter == "")
+                calculate.second_number = 0.0
+            else
+                calculate.second_number = enter.toDouble()
+            calculate.fixvalue()
+            //calculate.mul()
+
+            testview.text = calculate.first_number.toString()
+            testsecond.text = calculate.second_number.toString()
+            //testview.text = enter
             enter = ""
+            calculate.action = "*"
         }
         btn_div.setOnClickListener{
-            calculate.second_number = enter.toDouble()
-            calculate.div()
-            testview.text = enter
+            if (enter == "")
+                calculate.second_number = 0.0
+            else
+                calculate.second_number = enter.toDouble()
+            if (calculate.second_number != 0.0)
+                calculate.fixvalue()
+            else
+                resultField.text = "ERROR"
+            //calculate.mul()calculate.div()
+            testview.text = calculate.first_number.toString()
+            testsecond.text = calculate.second_number.toString()
+            //testview.text = enter
             enter = ""
+            calculate.action = "/"
         }
         btn_eq.setOnClickListener{
-            calculate.second_number = enter.toDouble()
+            if (enter == "")
+                calculate.second_number = 0.0
+            else
+                calculate.second_number = enter.toDouble()
             calculate.eq()
-            testview.text = enter
+            testview.text = calculate.first_number.toString()
+            testsecond.text = calculate.second_number.toString()
+            //testview.text = enter
             enter = ""
             resultField.text = calculate.first_number.toString()
         }
