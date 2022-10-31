@@ -6,6 +6,7 @@ class Calculate {
     public var first_number: Double = 0.0
     public var second_number: Double = 0.0
     public var action: String = ""
+
     public val window = MainActivity()
     public fun plus(){
         first_number += second_number
