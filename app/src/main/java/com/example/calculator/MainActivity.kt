@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
         btn_0.setOnClickListener{
+            check_zero()
             setTextFields("0")
             enter += "0"
             newTextFields(enter)
@@ -161,7 +162,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
     fun check_zero(){
-        if (resultField.text == "0") {
+        if (enter == "0") {
             enter = ""
             newTextFields("")
         }
