@@ -152,18 +152,12 @@
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/testview"
+        <Button
+            android:id="@+id/btn_clear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="TextView" />
-
-        <TextView
-            android:id="@+id/testsecond"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
+            android:text="Clear"
+            android:onClick="onOperationClick"/>
     </LinearLayout>
 </LinearLayout>

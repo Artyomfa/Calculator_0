@@ -6,6 +6,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     public var enter: String = ""
+    public var output: String = ""
+    public var int_enter: Int = 0
+    public var dot: Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -18,57 +21,67 @@ class MainActivity : AppCompatActivity() {
             newTextFields(enter)
         }
         btn_1.setOnClickListener{
-
+            check_zero()
             enter += "1"
-            setTextFields("1")
+           // setTextFields("1")
             newTextFields(enter)
         }
         btn_2.setOnClickListener{
+            check_zero()
             enter += "2"
-            setTextFields("2")
+           // setTextFields("2")
             newTextFields(enter)
-            //enter += "2"
         }
         btn_3.setOnClickListener{
-
-            setTextFields("3")
+            check_zero()
+           // setTextFields("3")
             enter += "3"
             newTextFields(enter)
         }
         btn_4.setOnClickListener{
-            setTextFields("4")
+            check_zero()
+          //  setTextFields("4")
             enter += "4"
             newTextFields(enter)
         }
         btn_5.setOnClickListener{
-            setTextFields("5")
+            check_zero()
+           // setTextFields("5")
             enter += "5"
             newTextFields(enter)
         }
         btn_6.setOnClickListener{
-            setTextFields("6")
+            check_zero()
+           // setTextFields("6")
             enter += "6"
             newTextFields(enter)
         }
         btn_7.setOnClickListener{
-            setTextFields("7")
+            check_zero()
+          //  setTextFields("7")
             enter += "7"
             newTextFields(enter)
         }
         btn_8.setOnClickListener{
-            setTextFields("8")
+            check_zero()
+           // setTextFields("8")
             enter += "8"
             newTextFields(enter)
+
         }
         btn_9.setOnClickListener{
-            setTextFields("9")
+            check_zero()
+         //   setTextFields("9")
             enter += "9"
             newTextFields(enter)
         }
         btn_point.setOnClickListener(){
-            setTextFields(".")
-            enter += "."
-            newTextFields(enter)
+         //   setTextFields(".")
+            if (dot == false) {
+                enter += "."
+                newTextFields(enter)
+                dot = true
+            }
         }
         btn_plus.setOnClickListener{
             if (enter == "")
@@ -76,13 +89,12 @@ class MainActivity : AppCompatActivity() {
             else
                 calculate.second_number = enter.toDouble()
             calculate.fixvalue()
-            //calculate.mul()calculate.plus()
-            testview.text = calculate.first_number.toString()
-            testsecond.text = calculate.second_number.toString()
-            //testview.text = enter
             enter = ""
+            output = calculate.first_number.toString()
+            check_int()
             if(calculate.action != "")
-                newTextFields(calculate.first_number.toString())
+                //newTextFields(calculate.first_number.toString())
+                newTextFields(output)
             calculate.action = "+"
 
         }
@@ -92,14 +104,13 @@ class MainActivity : AppCompatActivity() {
             else
                 calculate.second_number = enter.toDouble()
             calculate.fixvalue()
-            //calculate.mul()calculate.minus()
-            //testview.text = calculate.first_number.toString()
-            //testsecond.text = calculate.second_number.toString()
-            //testview.text = enter
-           // flag = true
+
             enter = ""
+            output = calculate.first_number.toString()
+            check_int()
             if(calculate.action != "")
-                newTextFields(calculate.first_number.toString())
+                //newTextFields(calculate.first_number.toString())
+                newTextFields(output)
             calculate.action = "-"
         }
         btn_mul.setOnClickListener{
@@ -108,18 +119,16 @@ class MainActivity : AppCompatActivity() {
             else
                 calculate.second_number = enter.toDouble()
             calculate.fixvalue()
-            //calculate.mul()
-
-           // testview.text = calculate.first_number.toString()
-           // testsecond.text = calculate.second_number.toString()
-            //testview.text = enter
             enter = ""
+            output = calculate.first_number.toString()
+            check_int()
             if(calculate.action != "")
-                newTextFields(calculate.first_number.toString())
+                //newTextFields(calculate.first_number.toString())
+                newTextFields(output)
             calculate.action = "*"
         }
         btn_div.setOnClickListener{
-            if (enter == "")
+           if (enter == "")
                 calculate.second_number = 1.0
             else
                 calculate.second_number = enter.toDouble()
@@ -127,42 +136,39 @@ class MainActivity : AppCompatActivity() {
                 calculate.fixvalue()
             else
                 resultField.text = "ERROR"
-            //calculate.mul()calculate.div()
-          //  testview.text = calculate.first_number.toString()
-          ///  testsecond.text = calculate.second_number.toString()
-            //testview.text = enter
             enter = ""
+            output = calculate.first_number.toString()
+            check_int()
             if(calculate.action != "")
-                newTextFields(calculate.first_number.toString())
+               // newTextFields(calculate.first_number.toString())
+                newTextFields(output)
             calculate.action = "/"
         }
         btn_eq.setOnClickListener{
-           /* resultField.text = calculate.first_number.toString()
-            if (enter == "")
-                calculate.second_number = 0.0
-            else
-                calculate.second_number = enter.toDouble()
-            calculate.eq()
-          //  testview.text = calculate.first_number.toString()
-       //     testsecond.text = calculate.second_number.toString()
-            //testview.text = enter
-            enter = ""
-*/
             calculate.second_number = enter.toDouble()
             calculate.fixvalue()
-            newTextFields(calculate.first_number.toString())
+            output = calculate.first_number.toString()
+            check_int()
+            newTextFields(output)
+            //newTextFields(calculate.first_number.toString())
             calculate.action = ""
-            //enter = operationField.text.toString()
+            enter = resultField.text.toString()
+        }
+        btn_clear.setOnClickListener{
+            calculate.clean()
+            resultField.text = ""
+            enter = ""
         }
     }
-
-    fun enter_number(str: String){
-        if (enter == "")
-            enter = str
-        else
-            enter += str
-      //  testview.text = enter
-
+    fun check_zero(){
+        if (resultField.text == "0") {
+            enter = ""
+            newTextFields("")
+        }
+    }
+    fun check_int() {
+        if (output.substringAfter(".") == "0")
+            output = output.substringBefore(".")
     }
 
     fun newTextFields(str: String) {
