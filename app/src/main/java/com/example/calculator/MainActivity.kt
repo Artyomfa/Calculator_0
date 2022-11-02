@@ -89,6 +89,7 @@ class MainActivity : AppCompatActivity() {
                 calculate.second_number = 0.0
             else
                 calculate.second_number = enter.toDouble()
+            calculate.current_action = "+"
             calculate.fixvalue()
             enter = ""
             output = calculate.first_number.toString()
@@ -104,6 +105,7 @@ class MainActivity : AppCompatActivity() {
                 calculate.second_number = 0.0
             else
                 calculate.second_number = enter.toDouble()
+            calculate.current_action = "-"
             calculate.fixvalue()
 
             enter = ""
@@ -119,6 +121,7 @@ class MainActivity : AppCompatActivity() {
                 calculate.second_number = 1.0
             else
                 calculate.second_number = enter.toDouble()
+            calculate.current_action = "*"
             calculate.fixvalue()
             enter = ""
             output = calculate.first_number.toString()
@@ -133,6 +136,7 @@ class MainActivity : AppCompatActivity() {
                 calculate.second_number = 1.0
             else
                 calculate.second_number = enter.toDouble()
+            calculate.current_action = "/"
             if (calculate.second_number != 0.0)
                 calculate.fixvalue()
             else

@@ -6,8 +6,8 @@ class Calculate {
     var first_number: Double = 0.0
     var second_number: Double = 0.0
     var action: String = ""
+    var current_action:String = ""
 
-    val window = MainActivity() // todo вообще, лучше так не делать, андроид не любит, когда сами вьюшки между классами перекидываются. Да, я вижу, что эта переменная в методах, которые не вызываются, но в целом на будущее
     fun clean(){
         first_number = 0.0
         second_number = 0.0
@@ -26,21 +26,6 @@ class Calculate {
         first_number /= second_number
     }
 
-    fun sum(){
-        if (window.enter == "")
-            second_number = 0.0
-        else
-            second_number = window.enter.toDouble()
-        fixvalue()
-    }
-    fun multy(){
-        if (window.enter == "")
-            second_number = 1.0
-        else
-            second_number = window.enter.toDouble()
-        fixvalue()
-    }
-
     fun eq(){
 
     }
@@ -48,14 +33,28 @@ class Calculate {
     fun fixvalue(){
         if(action == "")
             first_number = second_number
-        else if(action == "+")
+        else if(action == "+") {
+            if (second_number == 1.0 && (current_action == "*" || current_action == "/"))
+                second_number = 0.0
             plus()
-        else if(action == "-")
+        }
+        else if(action == "-"){
+            if (second_number == 1.0 && (current_action == "*" || current_action == "/"))
+                second_number = 0.0
             minus()
-        else if(action == "*")
+        }
+
+        else if(action == "*"){
+            if (second_number == 0.0 && (current_action == "+" || current_action == "-"))
+                second_number = 1.0
             mul()
-        else if(action == "/")
+        }
+
+        else if(action == "/") {
+            if (second_number == 0.0 && (current_action == "+" || current_action == "-"))
+                second_number = 1.0
             div()
+        }
         second_number = 0.0
     }
 }
