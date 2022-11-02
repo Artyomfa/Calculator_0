@@ -2,13 +2,13 @@ package com.example.calculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.* // todo синтетика в андроиде уже не актуальна, в следующем задании хотелось бы видеть viewBinding
 
 class MainActivity : AppCompatActivity() {
-    public var enter: String = ""
-    public var output: String = ""
-    public var int_enter: Int = 0
-    public var dot: Boolean = false
+    public var enter: String = "" // todo студия подсвечивает, что тут обозначать public не обязательно
+    public var output: String = ""// todo студия подсвечивает, что тут обозначать public не обязательно
+    public var int_enter: Int = 0// todo студия подсвечивает, что тут обозначать public не обязательно
+    public var dot: Boolean = false// todo студия подсвечивает, что тут обозначать public не обязательно
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -161,18 +161,18 @@ class MainActivity : AppCompatActivity() {
             enter = ""
         }
     }
-    fun check_zero(){
+    fun check_zero(){ //todo Данная функция должна быть private
         if (enter == "0") {
             enter = ""
             newTextFields("")
         }
     }
-    fun check_int() {
+    fun check_int() { //todo Данная функция должна быть private
         if (output.substringAfter(".") == "0")
             output = output.substringBefore(".")
     }
 
-    fun newTextFields(str: String) {
+    fun newTextFields(str: String) { //todo Данная функция должна быть private
         resultField.text = ""
         resultField.text = str
     }

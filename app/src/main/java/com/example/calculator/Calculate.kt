@@ -7,7 +7,7 @@ class Calculate {
     public var second_number: Double = 0.0
     public var action: String = ""
 
-    public val window = MainActivity()
+    public val window = MainActivity() // todo вообще, лучше так не делать, андроид не любит, когда сами вьюшки между классами перекидываются. Да, я вижу, что эта переменная в методах, которые не вызываются, но в целом на будущее
     public fun clean(){
         first_number = 0.0
         second_number = 0.0
